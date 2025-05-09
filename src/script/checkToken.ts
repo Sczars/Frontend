@@ -26,9 +26,16 @@ export async function loginUser(currUser: UserLogin): Promise<boolean> {
       },
     });
 
+    console.log(res.data);
+    
+
     localStorage.setItem("user_id", res.data.id);
-    localStorage.setItem("access_token", res.data.access_token);
-    localStorage.setItem("refresh_token", res.data.refresh_token);
+    localStorage.setItem("access_token", res.data.accessToken);
+    localStorage.setItem("refresh_token", res.data.refreshToken);
+
+    console.log(localStorage.getItem("access_token"));
+  
+    
     return true;
   } catch (err: unknown) {
     const error = err as AxiosError<ErrorResponse>;
@@ -51,8 +58,8 @@ export async function signupUser(currUser: UserSignup): Promise<boolean> {
     });
 
     localStorage.setItem("user_id", res.data.id);
-    localStorage.setItem("access_token", res.data.access_token);
-    localStorage.setItem("refresh_token", res.data.refresh_token);
+    localStorage.setItem("access_token", res.data.accessToken);
+    localStorage.setItem("refresh_token", res.data.refreshToken);
     return true;
   } catch (error) {
     const err = error as AxiosError<ErrorResponse>;
@@ -221,7 +228,7 @@ export async function refreshingToken(): Promise<boolean> {
       refreshToken: localStorage.getItem("refresh_token"),
     });
 
-    localStorage.setItem("access_token", res.data.access_token);
+    localStorage.setItem("access_token", res.data.accessToken);
     return true;
   } catch (error) {
     const err = error as AxiosError<ErrorResponse>;
