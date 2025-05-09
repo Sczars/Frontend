@@ -28,6 +28,7 @@ export default function Dashboard() {
 
       if (!user || !user.role || !user.isActive) {
         logout();
+        if (!user?.isActive) alert("you are banned");
         return;
       }
 
@@ -182,7 +183,7 @@ export default function Dashboard() {
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              flexDirection: "column"
+              flexDirection: "column",
             }}
           >
             {contentSwitch()}

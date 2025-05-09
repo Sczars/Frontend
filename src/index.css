@@ -113,7 +113,14 @@ td p {
   flex-direction: column;
 }
 
-.ant-pagination{
-  margin: 8px 0px 0px !important
-
+.ant-pagination {
+  margin: 8px 0px 0px !important;
 }
+
+.hoverable-cell {
+  background-color: #dbdbdb;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+

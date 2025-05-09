@@ -3,6 +3,7 @@ import { ColumnsType } from "antd/es/table";
 import { ReactNode } from "react";
 import { changeRoleUser, deactivateUser } from "../script/checkToken";
 import { UserInList } from "../script/type";
+import { DownOutlined } from "@ant-design/icons";
 
 interface TableData {
   key: number;
@@ -16,7 +17,7 @@ interface TableData {
 interface PropsData {
   data: UserInList[];
   setIsChange: React.Dispatch<React.SetStateAction<boolean>>;
-  switchToPage: (id: number, page:number) => Promise<void>;
+  switchToPage: (id: number, page: number) => Promise<void>;
   order: {
     label: ReactNode;
     key: string;
@@ -36,6 +37,9 @@ export default function UsersTable(props: PropsData) {
       render: (text: string, record) => (
         <span onClick={() => props.switchToPage(record.key, 1)}>{text}</span>
       ),
+      onCell: () => ({
+        className: "hoverable-cell",
+      }),
     },
     {
       title: "No. messages",
@@ -71,6 +75,7 @@ export default function UsersTable(props: PropsData) {
           >
             <Space>
               <span className="capitalize">{text}</span>
+              <DownOutlined />
             </Space>
           </span>
         </Dropdown>
